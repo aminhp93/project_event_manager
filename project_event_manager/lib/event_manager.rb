@@ -1,5 +1,6 @@
 require "csv"
 require 'sunlight/congress'
+require 'erb'
 
 Sunlight::Congress.api_key = "e179a6973728c4dd3fb1204283aaccb5"
 
@@ -34,5 +35,13 @@ contents.each do |row|
 
 	puts personal_letter
 end
+
+meaning_of_life = 42
+
+question = "The Answer of the Ultimate Question of Life"
+template = ERB.new question
+
+results = template.result(binding)
+puts results
 
 
