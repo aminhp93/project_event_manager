@@ -1,105 +1,170 @@
+# # class RPNCalculator
+# #   # TODO: your code goes here!
+# #   attr_reader :stack
+
+# #   def initialize(stack=[])
+# #   	@stack = stack
+# #   end
+
+# #   def value
+# #   	stack.last
+# #   end
+
+# #   def push(value)
+# #   	stack << value.to_f
+# #   end
+
+# #   def plus
+# #   	stack << pop + pop
+# #   end
+
+# #   def minus
+# #   	stack << - (pop - pop)
+# #   end
+
+# #   def times
+# #   	stack << pop * pop
+# #   end
+
+# #   def divide
+# #   	stack << 1/(pop/pop)
+# #   end
+
+# #   def pop 
+# #   	result = @stack.pop
+# #   	if result.nil? 
+# #   		raise "calculator is empty"
+# #   	end
+# #   	result
+# #   end
+
+# #   def tokens(string)
+# #   	result = []
+# #   	string.split(" ").collect do |i|
+# #   		if i == "+" || i == "-" || i == "*" || i == "\/"
+# #   			result << :"#{i}"
+# #   		else
+# #   			result << i.to_f
+# #   		end
+# #   	end
+# #   	result
+# #   end
+
+# #   def evaluate(string)
+# #   	tokens(string).each do |i|
+# #   		if i == :+
+# #   			plus
+# #   		elsif i == :-
+# #   			minus
+# #   		elsif i == :/
+# #   			divide
+# #   		elsif i == :*
+# #   			times
+# #   		else
+# #   			push(i)
+# #   		end
+# #   	end
+# #   	value
+# #   end
+# # end
+# # a = RPNCalculator.new()
+# # p a.evaluate("1 2 3 * + 4 5 - /")
+
+
 # class RPNCalculator
-#   # TODO: your code goes here!
 #   attr_reader :stack
 
 #   def initialize(stack=[])
-#   	@stack = stack
+#     @stack = stack
 #   end
-
+  
 #   def value
-#   	stack.last
+#     stack.last
 #   end
 
 #   def push(value)
-#   	stack << value.to_f
+#     stack << value.to_f
 #   end
 
 #   def plus
-#   	stack << pop + pop
+#     stack << pop + pop
 #   end
 
 #   def minus
-#   	stack << - (pop - pop)
+#     stack << -(pop - pop)
 #   end
 
 #   def times
-#   	stack << pop * pop
+#     stack << pop * pop
 #   end
 
 #   def divide
-#   	stack << 1/(pop/pop)
+#     stack << 1/(pop/pop)
 #   end
 
-#   def pop 
-#   	result = @stack.pop
-#   	if result.nil? 
-#   		raise "calculator is empty"
-#   	end
-#   	result
+#   def pop
+#     result = @stack.pop
+#     if result.nil?
+#       raise "calculator is empty"
+#     end
+#     result
 #   end
 
 #   def tokens(string)
-#   	result = []
-#   	string.split(" ").collect do |i|
-#   		if i == "+" || i == "-" || i == "*" || i == "\/"
-#   			result << :"#{i}"
-#   		else
-#   			result << i.to_f
-#   		end
-#   	end
-#   	result
+#     result = []
+#     string.split(" ").collect do |i|
+#       if i == "+" || i == "-" || i == "*" || i == "\/"
+#         result << :"#{i}"
+#       else
+#         result << i.to_f
+#       end
+#     end
+#     result
 #   end
 
 #   def evaluate(string)
-#   	tokens(string).each do |i|
-#   		if i == :+
-#   			plus
-#   		elsif i == :-
-#   			minus
-#   		elsif i == :/
-#   			divide
-#   		elsif i == :*
-#   			times
-#   		else
-#   			push(i)
-#   		end
-#   	end
-#   	value
+#     tokens(string).each do |i|
+#       if i == :+
+#         plus
+#       elsif i == :-
+#         minus
+#       elsif i == :/
+#         divide
+#       elsif i == :*
+#         times
+#       else
+#         push(i)
+#       end
+#     end
+#     value
 #   end
 # end
-# a = RPNCalculator.new()
-# p a.evaluate("1 2 3 * + 4 5 - /")
 
 
 class RPNCalculator
-  attr_reader :stack
 
-  def initialize(stack=[])
-    @stack = stack
+  def initialize
+    @stack = []
   end
   
-  def value
-    stack.last
-  end
-
-  def push(value)
-    stack << value.to_f
+  def push(n)
+    @stack << n.to_f
   end
 
   def plus
-    stack << pop + pop
+    @stack << pop + pop
   end
 
   def minus
-    stack << -(pop - pop)
+    @stack << - (pop - pop)
   end
 
   def times
-    stack << pop * pop
+    @stack << pop * pop
   end
 
   def divide
-    stack << 1/(pop/pop)
+    @stack << 1/(pop/pop)
   end
 
   def pop
@@ -108,6 +173,10 @@ class RPNCalculator
       raise "calculator is empty"
     end
     result
+  end
+
+  def value
+    @stack.last
   end
 
   def tokens(string)
@@ -119,7 +188,7 @@ class RPNCalculator
         result << i.to_f
       end
     end
-    result
+    result 
   end
 
   def evaluate(string)
@@ -128,14 +197,30 @@ class RPNCalculator
         plus
       elsif i == :-
         minus
-      elsif i == :/
-        divide
       elsif i == :*
         times
-      else
+      elsif i == :/
+        divide
+      else 
         push(i)
       end
     end
     value
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

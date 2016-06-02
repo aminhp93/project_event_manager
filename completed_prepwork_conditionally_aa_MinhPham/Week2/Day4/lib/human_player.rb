@@ -1,57 +1,91 @@
-# class HumanPlayer
+# # class HumanPlayer
+# # 	attr_reader :name
+# # 	attr_accessor :mark
+
+# # 	def initialize(name)
+# # 		@name = name
+# # 	end
+
+# # 	def get_move
+# # 		puts "where you want to move? ( row, col )"
+# # 		gets.chomp.split(", ").collect(&:to_i)
+
+# # 	end
+
+# # 	def display(board)
+# # 		row0 = "0 |"
+# # 		(0..2).each do |col|
+# # 			row0 << (board.empty?([0, col]) ? "  |" : " " + board[0, col].to_s + "  |")
+# # 		end
+
+# # 		row1 = "1 |"
+# # 		(0..2).each do |col|
+# # 			row1 << (board.empty?([1, col]) ? "  |" : " " + board[1, col].to_s + "  |")
+# # 		end
+# # 		row2 = "2 |"
+# # 		(0..2).each do |col|
+# # 			row2 << (board.empty?([2, col]) ? "  |" : " " + board[2, col].to_s + "  |")
+# # 		end
+
+# # 		puts "   0  1  2  "
+# # 		puts "  |--------|"
+# # 		puts row0
+# # 		puts "  |--------|"
+# # 		puts row1
+# # 		puts "  |--------|"
+# # 		puts row2
+# # 		puts "  |--------|"
+# # 	end
+# # end
+
+
+#  class HumanPlayer
 # 	attr_reader :name
-# 	attr_accessor :mark
+# 	attr_accessor :marks
 
 # 	def initialize(name)
 # 		@name = name
 # 	end
 
 # 	def get_move
-# 		puts "where you want to move? ( row, col )"
+# 		puts "where you want to mov? (row, col)"
 # 		gets.chomp.split(", ").collect(&:to_i)
 
 # 	end
-
 # 	def display(board)
-# 		row0 = "0 |"
+# 		row0 = "0  |"
 # 		(0..2).each do |col|
-# 			row0 << (board.empty?([0, col]) ? "  |" : " " + board[0, col].to_s + "  |")
+# 			row0 << (board.empty?([0, col]) ? "  |" : " " + board[0, col].to_s + " |")
 # 		end
 
-# 		row1 = "1 |"
+# 		row1 = "1  |"
 # 		(0..2).each do |col|
-# 			row1 << (board.empty?([1, col]) ? "  |" : " " + board[1, col].to_s + "  |")
-# 		end
-# 		row2 = "2 |"
-# 		(0..2).each do |col|
-# 			row2 << (board.empty?([2, col]) ? "  |" : " " + board[2, col].to_s + "  |")
+# 			row1 << (board.empty?([1, col]) ? "  |" : " " + board[1, col].to_s + " |")
 # 		end
 
-# 		puts "   0  1  2  "
-# 		puts "  |--------|"
+# 		row2 = "2  |"
+# 		(0..2).each do |col|
+# 			row2 << (board.empty?([2, col]) ? "  |" : " " + board[2, col].to_s + " |")
+# 		end
+# 		puts "  0  1  2  "
+# 		puts " |--------|"
 # 		puts row0
-# 		puts "  |--------|"
+# 		puts " |--------|"
 # 		puts row1
-# 		puts "  |--------|"
+# 		puts " |--------|"
 # 		puts row2
-# 		puts "  |--------|"
+# 		puts " |--------|"
 # 	end
+	
 # end
-
-
- class HumanPlayer
+class HumanPlayer
 	attr_reader :name
 	attr_accessor :mark
 
-	def initialize(name)
-		@name = name
+	def initialize(name123)
+		@name = name123
 	end
 
-	def get_move
-		puts "where you want to mov? (row, col)"
-		gets.chomp.split(", ").collect(&:to_i)
-
-	end
 	def display(board)
 		row0 = "0  |"
 		(0..2).each do |col|
@@ -67,13 +101,20 @@
 		(0..2).each do |col|
 			row2 << (board.empty?([2, col]) ? "  |" : " " + board[2, col].to_s + " |")
 		end
-		puts "  0  1  2  "
-		puts " |--------|"
+		puts "    0  1  2  "
+		puts "   |--------|"
 		puts row0
-		puts " |--------|"
+		puts "   |--------|"
 		puts row1
-		puts " |--------|"
+		puts "   |--------|"
 		puts row2
-		puts " |--------|"
+		puts "   |--------|"
 	end
+
+	def get_move
+		puts "where you want to move? ( row, col )"
+		gets.chomp.split(", ").collect(&:to_i)
+
+	end
+
 end

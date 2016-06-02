@@ -1,4 +1,4 @@
-# Students and Courses
+ # Students and Courses
 #
 # Write a set of classes to model `Student`s and `Course`s.
 #
@@ -49,8 +49,36 @@
 #   enrolls in a new course that conflicts with an existing course time.
 #     * May want to write a `Student#has_conflict?` method to help.
 
+# class Course
+# 	attr_reader :name, :department, :credits, :days, :time_block, :students
+
+# 	def initialize(name, department, credits, days=nil, time_block=nil)
+# 		@name = name
+# 		@department = department
+# 		@credits = credits
+# 		@days = days
+# 		@time_block = time_block
+# 		@students = []
+# 	end
+
+# 	def conflicts_with?(course2)
+# 		return false if self.time_block != course2.time_block
+
+# 		days.any? do |i|
+# 			course2.days.include?(i)
+# 		end
+# 	end
+
+# 	def add_student(student)
+# 		student.enroll(self)
+# 	end
+# end
+
+
+
+
 class Course
-	attr_reader :name, :department, :credits, :days, :time_block, :students
+	attr_reader :students, :name, :department, :credits, :days, :time_block
 
 	def initialize(name, department, credits, days=nil, time_block=nil)
 		@name = name
@@ -61,6 +89,10 @@ class Course
 		@students = []
 	end
 
+	def add_student(student)
+		student.enroll(self)
+	end
+
 	def conflicts_with?(course2)
 		return false if self.time_block != course2.time_block
 
@@ -68,16 +100,7 @@ class Course
 			course2.days.include?(i)
 		end
 	end
-
-	def add_student(student)
-		student.enroll(self)
-	end
 end
-
-
-
-
-
 
 
 

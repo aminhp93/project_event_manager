@@ -3,21 +3,35 @@
 # Write a method `factors(num)` that returns an array containing all the
 # factors of a given number.
 
+# def factors(num)
+#   result = []
+#   i = 1
+#   while i <= num
+#     if num % i == 0
+#       result << i
+#     end
+#     i += 1
+#   end
+#   result
+# end
+
+# def doubler(array)
+#   resutl = array.collect{|i| i*2}
+#   resutl
+# end
+
 def factors(num)
   result = []
   i = 1
   while i <= num
-    if num % i == 0
-      result << i
-    end
+    result << i if num % i == 0
     i += 1
   end
   result
 end
 
 def doubler(array)
-  resutl = array.collect{|i| i*2}
-  resutl
+  array.collect{|i| i*2}
 end
 
 # ### Bubble Sort
@@ -59,12 +73,53 @@ end
 #
 # http://stackoverflow.com/questions/827649/what-is-the-ruby-spaceship-operator
 
+# class Array
+#   def bubble_sort!
+#     sorted = false
+#     until sorted 
+#       sorted = true
+
+#       each_index do |i|
+#         next if i + 1 == self.length
+#         j = i + 1
+#         if self[i] > self[j]
+#           sorted = false
+#           self[i], self[j] = self[j], self[i]
+#         end
+#       end
+#     end
+#     self
+#   end
+
+#   def bubble_sort!(&prc)
+#     prc ||= Proc.new{|x,y| x <=> y}
+#     sorted = false
+#     until sorted
+#       sorted = true
+
+#       each_index do |i|
+#         next if i + 1 == self.length
+#         j = i + 1
+#         if prc.call(self[i], self[j]) == 1
+#           sorted = false
+#           self[i], self[j] = self[j], self[i]
+#         end
+#       end
+#     end
+#     self
+#   end
+
+#   def bubble_sort(&prc)
+#     self.dup.bubble_sort!(&prc)
+#   end
+# end
+
 class Array
   def bubble_sort!
     sorted = false
-    until sorted 
+    until sorted
       sorted = true
-
+      
       each_index do |i|
         next if i + 1 == self.length
         j = i + 1
@@ -78,7 +133,8 @@ class Array
   end
 
   def bubble_sort!(&prc)
-    prc ||= Proc.new{|x,y| x <=> y}
+    prc ||= Proc.new{|x, y| x <=> y}
+
     sorted = false
     until sorted
       sorted = true
@@ -99,7 +155,6 @@ class Array
     self.dup.bubble_sort!(&prc)
   end
 end
-
 # ### Substrings and Subwords
 #
 # Write a method, `substrings`, that will take a `String` and return an

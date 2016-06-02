@@ -1,6 +1,23 @@
+# # def reverser
+# # 	str = yield
+# # 	words = str.split(" ")
+# # 	result = words.collect{|i| i.reverse}
+# # 	result.join(" ")
+# # end
+
+# # def adder(n=1)
+# # 	yield + n
+# # end
+
+# # def repeater(n=1)
+# # 	n.times do 
+# # 		yield
+# # 	end
+# # end
+
 # def reverser
-# 	str = yield
-# 	words = str.split(" ")
+# 	string = yield
+# 	words = string.split(" ")
 # 	result = words.collect{|i| i.reverse}
 # 	result.join(" ")
 # end
@@ -16,14 +33,14 @@
 # end
 
 def reverser
-	string = yield
-	words = string.split(" ")
+	str = yield
+	words = str.split(" ")
 	result = words.collect{|i| i.reverse}
 	result.join(" ")
 end
 
-def adder(n=1)
-	yield + n
+def adder(x=1)
+	yield + x 
 end
 
 def repeater(n=1)
@@ -31,3 +48,18 @@ def repeater(n=1)
 		yield
 	end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

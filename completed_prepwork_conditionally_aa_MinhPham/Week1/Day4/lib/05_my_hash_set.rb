@@ -29,28 +29,28 @@
 # all the items of `set1` that aren't in `set2`.
 
 class MyHashSet
-	attr_reader :store
+	# attr_reader :store
 
 	def initialize
 		@store = {}
 	end
 
 	def insert(el)
-		store[el] = true
+		@store[el] = true
 	end
 
 	def include?(el)
-		store.has_key?(el)
+		@store.has_key?(el)
 	end
 
 	def delete(el)
 		return false unless self.include?(el)
-		store.delete(el)
+		@store.delete(el)
 		true
 	end
 
 	def to_a
-		store.keys
+		@store.keys
 	end
 
 	def union(set2)
@@ -84,3 +84,5 @@ end
 # - Write a `set1#==(object)` method. It should return true if `object` is
 #   a `MyHashSet`, has the same size as `set1`, and every member of
 #   `object` is a member of `set1`.
+
+

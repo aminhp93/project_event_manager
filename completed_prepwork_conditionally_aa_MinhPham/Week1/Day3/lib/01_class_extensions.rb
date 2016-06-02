@@ -25,10 +25,19 @@
 #   end
 # end
 
+# class String
+#   def caesar(shift)
+#     string = self.downcase
+#     array = string.split("").collect{|i| (i.ord + shift - "a".ord)%26}
+#     result = array.collect{|j| (j + "a".ord).chr}.join("")
+#     result
+#   end
+# end
+
 class String
-  def caesar(shift)
+  def caesar(n)
     string = self.downcase
-    array = string.split("").collect{|i| (i.ord + shift - "a".ord)%26}
+    array = string.split("").collect {|i| (i.ord - "a".ord + n) % 26}
     result = array.collect{|j| (j + "a".ord).chr}.join("")
     result
   end
@@ -61,19 +70,35 @@ end
 #   end
 # end
 
+# class Hash
+#   def difference(other_hash)
+#     result = {}
+#     self.keys.each do |key|
+#       result[key] = self[key] unless other_hash.key?(key)
+#     end
+
+#     other_hash.keys.each do |key|
+#       result[key] = other_hash[key] unless self.key?(key)
+#     end
+#     result
+#   end
+# end
+
 class Hash
   def difference(other_hash)
-    result = {}
-    self.keys.each do |key|
-      result[key] = self[key] unless other_hash.key?(key)
+    result = Hash.new(0)
+    self.keys.each do |i|
+      result[i] = self[i] unless other_hash.key?(i)
     end
 
-    other_hash.keys.each do |key|
-      result[key] = other_hash[key] unless self.key?(key)
+    other_hash.keys.each do |j|
+      result[j] = other_hash[j] unless self.key?(j)
     end
     result
   end
+
 end
+
 
 # Stringify
 #
@@ -146,18 +171,34 @@ end
 #   end
 # end
 
+# class Fixnum
+#   def stringify(base)
+#     return "0" if self == 0
+#     digits = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"]
+#     low_digit = self % base
+#     leftover = self - low_digit
+#     if leftover > 0
+#       (leftover/base).stringify(base) + digits[low_digit]
+#     else
+#       digits[low_digit]
+#     end
+#   end
+# end
+
 class Fixnum
   def stringify(base)
-    return "0" if self == 0
     digits = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"]
+    return 0 if self == 0
     low_digit = self % base
     leftover = self - low_digit
-    if leftover > 0
+    if leftover > 0 
       (leftover/base).stringify(base) + digits[low_digit]
     else
       digits[low_digit]
     end
   end
+
 end
+
 # Bonus: Refactor your `String#caesar` method to work with strings containing
 # both upper- and lowercase letters.

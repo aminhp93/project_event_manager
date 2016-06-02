@@ -1,46 +1,90 @@
-# def echo(str)
-# 	str
+# # def echo(str)
+# # 	str
+# # end
+
+# # def shout(str)
+# # 	str.upcase
+# # end
+
+# # def repeat(str, n=2)
+# # 	i = 2
+# # 	result = "#{str}"
+# # 	while i <= n
+# # 		result += " " + str
+# # 		i += 1
+# # 	end
+# # 	result
+# # end
+
+# # def start_of_word(str, n)
+# # 	char = str.split("")
+# # 	result = ""
+# # 	i = 0
+# # 	while i <= n -1 
+# # 		result << char[i]
+# # 		i += 1
+# # 	end
+# # 	result
+# # end
+
+# # def first_word(str)
+# # 	words = str.split(" ")
+# # 	words[0]
+# # end	
+
+# # def titleize(str)
+# # 	words = str.split(" ")
+# # 	no_need = %w[and over the a an]
+# # 	result = []
+# # 	i = 0
+# # 	while i < words.length 
+# # 		if i == 0 
+# # 			result << words[i].capitalize
+# # 		elsif !no_need.include?(words[i])
+# # 			result << words[i].capitalize
+# # 		else
+# # 			result << words[i]
+# # 		end
+# # 		i += 1
+# # 	end
+# # 	result.join(" ")
+# # end
+
+# def echo(string)
+# 	"#{string}"
 # end
 
-# def shout(str)
-# 	str.upcase
+# def shout(string)
+# 	string.upcase
 # end
 
-# def repeat(str, n=2)
-# 	i = 2
-# 	result = "#{str}"
-# 	while i <= n
-# 		result += " " + str
+# def repeat(string, n=2)
+# 	result = "#{string}"
+# 	i = 1
+# 	while i < n
+# 		result += " " + "#{string}"
 # 		i += 1
 # 	end
 # 	result
 # end
 
-# def start_of_word(str, n)
-# 	char = str.split("")
-# 	result = ""
-# 	i = 0
-# 	while i <= n -1 
-# 		result << char[i]
-# 		i += 1
-# 	end
-# 	result
+# def start_of_word(string, n)
+# 	string[0..(n-1)]
 # end
 
-# def first_word(str)
-# 	words = str.split(" ")
-# 	words[0]
-# end	
+# def first_word(string)
+# 	string.split(" ")[0]
+# end
 
-# def titleize(str)
-# 	words = str.split(" ")
-# 	no_need = %w[and over the a an]
+# def titleize(string)
+# 	untitle = %w[ and over the a an ]
+# 	words = string.split(" ")
 # 	result = []
 # 	i = 0
-# 	while i < words.length 
-# 		if i == 0 
+# 	while i < words.length
+# 		if i == 0
 # 			result << words[i].capitalize
-# 		elsif !no_need.include?(words[i])
+# 		elsif !untitle.include?(words[i])
 # 			result << words[i].capitalize
 # 		else
 # 			result << words[i]
@@ -50,46 +94,46 @@
 # 	result.join(" ")
 # end
 
-def echo(string)
-	"#{string}"
+
+def echo(name)
+	"#{name}"
 end
 
-def shout(string)
-	string.upcase
+def shout(name)
+	"#{name.upcase}"
 end
 
-def repeat(string, n=2)
-	result = "#{string}"
+def repeat(name, n=2)
+	result = "#{name}"
+	(n-1).times do 
+		result += " #{name}"
+	end
+	result
+end
+
+def start_of_word(name, n)
+	name[0..(n-1)]
+end
+
+def first_word(string)
+	words = string.split
+	words[0]
+end
+
+def titleize(string)
+	words = string.split
+	result = words[0].capitalize
 	i = 1
-	while i < n
-		result += " " + "#{string}"
+	while i < words.length
+		unless ["over", "the", "an", "a", "and"].include?(words[i])
+			result += " " + words[i].capitalize
+		else
+			result += " " + words[i]
+		end
 		i += 1
 	end
 	result
 end
 
-def start_of_word(string, n)
-	string[0..(n-1)]
-end
 
-def first_word(string)
-	string.split(" ")[0]
-end
 
-def titleize(string)
-	untitle = %w[ and over the a an ]
-	words = string.split(" ")
-	result = []
-	i = 0
-	while i < words.length
-		if i == 0
-			result << words[i].capitalize
-		elsif !untitle.include?(words[i])
-			result << words[i].capitalize
-		else
-			result << words[i]
-		end
-		i += 1
-	end
-	result.join(" ")
-end

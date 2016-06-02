@@ -3,6 +3,16 @@
 # Write an Array method, `sum`, that returns the sum of the elements in the
 # array. You may assume that all of the elements are integers.
 
+# class Array
+#   def sum
+#     result = 0
+#     self.each do |i|
+#       result += i
+#     end
+#     result
+#   end
+# end
+
 class Array
   def sum
     result = 0
@@ -11,31 +21,40 @@ class Array
     end
     result
   end
-end
 
+end
 # Square
 #
 # Write an array method, `square`, that returns a new array containing the
 # squares of each element. You should also implement a "bang!" version of this
-# method, which mutates the original array.
+# # method, which mutates the original array.
+
+# class Array
+#   def square
+    
+#     result = []
+#     self.each do |i|
+#       result << i**2
+#     end
+#     result
+#   end
+
+#   def square!
+#     self.collect! do |i|
+#       i**2
+#     end
+#   end
+# end
 
 class Array
-  def square
-    
-    result = []
-    self.collect do |i|
-      result << i**2
-    end
-    result
+  def square 
+    self.collect{|i| i**2}
   end
 
   def square!
-    self.collect! do |i|
-      i**2
-    end
+    self.collect!{|i| i**2}
   end
 end
-
 # Finding Uniques
 #
 # Monkey-patch the Array class with your own `uniq` method, called
@@ -48,12 +67,20 @@ end
 #
 # Do not use the built-in `uniq` method!
 
+# class Array
+#   def my_uniq
+#     result = []
+#     self.select do |i|
+#       result << i unless result.include?(i)
+#     end
+#     result
+#   end
+# end
+
 class Array
   def my_uniq
     result = []
-    self.select do |i|
-      result << i unless result.include?(i)
-    end
+    self.each {|i| result << i unless result.include?(i)}
     result
   end
 end
@@ -74,6 +101,24 @@ end
 # * `[0, 2]` before `[1, 2]` (smaller first elements come first)
 # * `[0, 1]` before `[0, 2]` (then smaller second elements come first)
 
+# class Array
+#   def two_sum
+#     result = []
+#     i = 0
+#     while i < self.length - 1
+#       j = i + 1
+#       while j < self.length
+#         if self[i] + self[j] == 0
+#           result << [i, j]
+#         end
+#         j += 1
+#       end
+#       i += 1
+#     end
+#     result
+#   end
+# end
+
 class Array
   def two_sum
     result = []
@@ -81,9 +126,7 @@ class Array
     while i < self.length - 1
       j = i + 1
       while j < self.length
-        if self[i] + self[j] == 0
-          result << [i, j]
-        end
+        result << [i, j] if self[i] + self[j] == 0
         j += 1
       end
       i += 1
@@ -99,18 +142,33 @@ end
 # sorted array. If the array has an even number of integers, return the
 # average of the middle two items from the sorted array.
 
+# class Array
+#   def median
+#     sorted = self.sort
+#     return nil if empty?
+#     result = nil
+#     if self.length % 2 == 1
+#       result = sorted[(sorted.length - 1)/2]
+#     else 
+#       result = (sorted[sorted.length/2] + sorted[sorted.length/2 - 1])/2.0
+#     end
+#     result
+#   end
+# end
+
 class Array
   def median
-    sorted = self.sort
-    return nil if empty?
+    self.sort!
     result = nil
-    if self.length % 2 == 1
-      result = sorted[(sorted.length - 1)/2]
-    else 
-      result = (sorted[sorted.length/2] + sorted[sorted.length/2 - 1])/2.0
+    return nil if empty?
+    if self.length % 2 == 0
+      result = (self[self.length/2- 1] + self[self.length/2])/2.0 
+    else
+      result = self[(self.length - 1)/2]
     end
     result
   end
+
 end
 
 # My Transpose
@@ -160,10 +218,24 @@ end
 #
 # Don't use the built-in `transpose` method!
 
+# class Array
+#   def my_transpose
+#     dimension = self.first.count
+#     cols = Array.new(dimension) {Array.new(dimension)}
+
+#     dimension.times do |i|
+#       dimension.times do |j|
+#         cols[j][i] = self[i][j]
+#       end
+#     end
+#     cols
+#   end
+# end
+
 class Array
   def my_transpose
     dimension = self.first.count
-    cols = Array.new(dimension) {Array.new(dimension)}
+    cols = Array.new(dimension){Array.new(dimension)}
 
     dimension.times do |i|
       dimension.times do |j|
@@ -173,3 +245,5 @@ class Array
     cols
   end
 end
+
+
