@@ -1,11 +1,31 @@
 Rails.application.routes.draw do
-  root :to => "demo#index"
+  
+
+  # get 'public/index'
+
+  # get 'public/show'
+
+  # get 'admin_users/index'
+
+  # get 'admin_users/new'
+
+  # get 'admin_users/edit'
+
+  # get 'admin_users/delete'
+
+  root "public#index"
+
+  get 'show/:permalink', :to => 'public#show'
+  get 'admin', :to => "access#index"
+
+  # get 'access/login'
+
   
   # get 'demo/index'
 
   # match 'demo/index', :to => 'demo#index', :via => :get
 
-  match ':controller(/:action(/:id(.:format)))', :via => :get
+  match ':controller(/:action(/:id(.:format)))', :via => [:get, :post]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
